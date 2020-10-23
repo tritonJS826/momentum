@@ -201,19 +201,15 @@ function setBgGreet(isManual) {
     if (hour < 6) {
       // Night
       greeting.textContent = "Good Night, ";
-      document.body.style.color = "white";
     } else if (hour < 12) {
       // Morning
-      document.body.style.color = "black";
       greeting.textContent = "Good Morning, ";
     } else if (hour < 18) {
       // Afternoon
       greeting.textContent = "Good Afternoon, ";
-      document.body.style.color = "black";
     } else {
       // Evening
       greeting.textContent = "Good Evening, ";
-      document.body.style.color = "white";
     }
   }
 
@@ -301,19 +297,19 @@ async function onChangeCity({ target }) {
   if (!target.value) return;
   localStorage.setItem("city", target.value);
   try {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${target.value}&lang=ru&appid=08f2a575dda978b9c539199e54df03b0&units=metric`;
-    const res = await fetch(url);
-    const data = await res.json();
+    // const url = `https://api.openweathermap.org/data/2.5/weather?q=${target.value}&lang=ru&appid=08f2a575dda978b9c539199e54df03b0&units=metric`;
+    // const res = await fetch(url);
+    // const data = await res.json();
     console.log(data.main.temp, data.main.humidity, data.wind.speed, data.weather[0].icon);
     wetherBlock.innerHTML = `
-    <img className="TemperatureIMG" src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="" />
+    <!-- <img className="TemperatureIMG" src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="" /> -->
     <p>Temperature: ${data.main.temp}</p>
     <p>Humidity: ${data.main.humidity}</p>
     <p>WindSpeed: ${data.wind.speed}</p>
     `;
   } catch (e) {
     wetherBlock.innerHTML = 'incorrect data';
-    console.log(e);
+    console.log(e.message);
   }
 }
 
