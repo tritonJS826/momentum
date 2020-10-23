@@ -126,28 +126,28 @@ const showAmPm = true;
 // Show Time
 function showTime() {
   const dayNames = [
-    'Воскресенье',
-    'Понедельник',
-    'Вторник',
-    'Среда',
-    'Четверг',
-    'Пятница',
-    'Суббота',
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednsday',
+    'Thoursday',
+    'Friday',
+    'Saturday',
   ];
 
   const monthNames = [
-    'Январь',
-    'Февраль',
-    'Март',
-    'Апрель',
-    'Май',
-    'Июнь',
-    'Июль',
-    'Август',
-    'Сентябрь',
-    'Октябрь',
-    'Ноябрь',
-    'Декабрь',
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'Semptember',
+    'October',
+    'November',
+    'December',
   ];
 
   let today = new Date();
@@ -297,15 +297,15 @@ async function onChangeCity({ target }) {
   if (!target.value) return;
   localStorage.setItem("city", target.value);
   try {
-    // const url = `https://api.openweathermap.org/data/2.5/weather?q=${target.value}&lang=ru&appid=08f2a575dda978b9c539199e54df03b0&units=metric`;
-    // const res = await fetch(url);
-    // const data = await res.json();
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${target.value}&lang=ru&appid=08f2a575dda978b9c539199e54df03b0&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json();
     console.log(data.main.temp, data.main.humidity, data.wind.speed, data.weather[0].icon);
     wetherBlock.innerHTML = `
-    <!-- <img className="TemperatureIMG" src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="" /> -->
-    <p>Temperature: ${data.main.temp}</p>
-    <p>Humidity: ${data.main.humidity}</p>
-    <p>WindSpeed: ${data.wind.speed}</p>
+    <img className="TemperatureIMG" src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="" />
+    <p>Temperature: ${data.main.temp} C</p>
+    <p>Humidity: ${data.main.humidity} %</p>
+    <p>WindSpeed: ${data.wind.speed} m/s</p>
     `;
   } catch (e) {
     wetherBlock.innerHTML = 'incorrect data';
