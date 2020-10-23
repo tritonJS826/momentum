@@ -1,30 +1,113 @@
-//Images
-const images = [
+const store = {
+  night: [
     'url("./assets/images/night/01.jpg")',
     'url("./assets/images/night/02.jpg")',
     'url("./assets/images/night/03.jpg")',
     'url("./assets/images/night/04.jpg")',
     'url("./assets/images/night/05.jpg")',
     'url("./assets/images/night/06.jpg")',
+    'url("./assets/images/night/07.jpg")',
+    'url("./assets/images/night/08.jpg")',
+    'url("./assets/images/night/09.jpg")',
+    'url("./assets/images/night/10.jpg")',
+    'url("./assets/images/night/11.jpg")',
+    'url("./assets/images/night/12.jpg")',
+    'url("./assets/images/night/13.jpg")',
+    'url("./assets/images/night/14.jpg")',
+    'url("./assets/images/night/15.jpg")',
+    'url("./assets/images/night/16.jpg")',
+    'url("./assets/images/night/17.jpg")',
+    'url("./assets/images/night/18.jpg")',
+    'url("./assets/images/night/19.jpg")',
+    'url("./assets/images/night/20.jpg")',
+  ],
+  morning: [
     'url("./assets/images/morning/01.jpg")',
     'url("./assets/images/morning/02.jpg")',
     'url("./assets/images/morning/03.jpg")',
     'url("./assets/images/morning/04.jpg")',
     'url("./assets/images/morning/05.jpg")',
     'url("./assets/images/morning/06.jpg")',
+    'url("./assets/images/morning/07.jpg")',
+    'url("./assets/images/morning/08.jpg")',
+    'url("./assets/images/morning/09.jpg")',
+    'url("./assets/images/morning/10.jpg")',
+    'url("./assets/images/morning/11.jpg")',
+    'url("./assets/images/morning/12.jpg")',
+    'url("./assets/images/morning/13.jpg")',
+    'url("./assets/images/morning/14.jpg")',
+    'url("./assets/images/morning/15.jpg")',
+    'url("./assets/images/morning/16.jpg")',
+    'url("./assets/images/morning/17.jpg")',
+    'url("./assets/images/morning/18.jpg")',
+    'url("./assets/images/morning/19.jpg")',
+    'url("./assets/images/morning/20.jpg")',
+  ],
+  day: [
     'url("./assets/images/day/01.jpg")',
     'url("./assets/images/day/02.jpg")',
     'url("./assets/images/day/03.jpg")',
     'url("./assets/images/day/04.jpg")',
     'url("./assets/images/day/05.jpg")',
     'url("./assets/images/day/06.jpg")',
+    'url("./assets/images/day/07.jpg")',
+    'url("./assets/images/day/08.jpg")',
+    'url("./assets/images/day/09.jpg")',
+    'url("./assets/images/day/10.jpg")',
+    'url("./assets/images/day/11.jpg")',
+    'url("./assets/images/day/12.jpg")',
+    'url("./assets/images/day/13.jpg")',
+    'url("./assets/images/day/14.jpg")',
+    'url("./assets/images/day/15.jpg")',
+    'url("./assets/images/day/16.jpg")',
+    'url("./assets/images/day/17.jpg")',
+    'url("./assets/images/day/18.jpg")',
+    'url("./assets/images/day/19.jpg")',
+    'url("./assets/images/day/20.jpg")',
+  ],
+  evening: [
     'url("./assets/images/evening/01.jpg")',
     'url("./assets/images/evening/02.jpg")',
     'url("./assets/images/evening/03.jpg")',
     'url("./assets/images/evening/04.jpg")',
     'url("./assets/images/evening/05.jpg")',
     'url("./assets/images/evening/06.jpg")',
-  ];
+    'url("./assets/images/evening/07.jpg")',
+    'url("./assets/images/evening/08.jpg")',
+    'url("./assets/images/evening/09.jpg")',
+    'url("./assets/images/evening/10.jpg")',
+    'url("./assets/images/evening/11.jpg")',
+    'url("./assets/images/evening/12.jpg")',
+    'url("./assets/images/evening/13.jpg")',
+    'url("./assets/images/evening/14.jpg")',
+    'url("./assets/images/evening/15.jpg")',
+    'url("./assets/images/evening/16.jpg")',
+    'url("./assets/images/evening/17.jpg")',
+    'url("./assets/images/evening/18.jpg")',
+    'url("./assets/images/evening/19.jpg")',
+    'url("./assets/images/evening/20.jpg")',
+  ],
+}
+
+// Helpers
+function shuffle(array) {
+  for (let i=0; i < 10; i++ ) {
+    array.sort(() => Math.random() - 0.5);
+  }
+  return array;
+}
+
+// Images
+let images = [];
+(function fillImages() {
+  const nightImgs = shuffle([...store.night]).slice(0, 6);
+  const morningImgs = shuffle([...store.morning]).slice(0, 6);
+  const dayImgs = shuffle([...store.day]).slice(0, 6);
+  const eveningImgs = shuffle([...store.evening]).slice(0, 6);
+
+  images = [...nightImgs, ...morningImgs, ...dayImgs, ...eveningImgs];
+
+})()
 
 // DOM Elements
 const time = document.querySelector(".time");
